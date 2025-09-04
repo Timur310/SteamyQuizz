@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid white;
+  border-right-color: #B13BFF;
+  animation: l2 1s infinite linear;
+}
+
+@keyframes l2 {to{transform: rotate(1turn)}}
+
+:root {
+  --background: #210F37;
+  --secondary-background: oklch(100% 0 0);
+  --foreground: white;
+  --main-foreground: white;
+  --main: #B13BFF;
+  --border: #471396;
+  --ring: oklch(0% 0 0);
+  --overlay: oklch(0% 0 0 / 0.8);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #0062ff;
+  --chart-2: #FF4D50;
+  --chart-3: #FACC00;
+  --chart-4: #05E17A;
+  --chart-5: #7A83FF;
+  --chart-active-dot: #000;
+}
+
+.dark {
+  --background: oklch(29.23% 0.0626 270.49);
+  --secondary-background: oklch(23.93% 0 0);
+  --foreground: oklch(92.49% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --main: oklch(67.47% 0.1726 259.49);
+  --border: oklch(0% 0 0);
+  --ring: oklch(100% 0 0);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #5294FF;
+  --chart-2: #FF6669;
+  --chart-3: #E0B700;
+  --chart-4: #04C86D;
+  --chart-5: #7A83FF;
+  --chart-active-dot: #fff;
+}
+
+@theme inline {
+  --font-quicksand: "Quicksand", sans-serif; 
+  --color-main: var(--main);
+  --color-background: var(--background);
+  --color-secondary-background: var(--secondary-background);
+  --color-foreground: var(--foreground);
+  --color-main-foreground: var(--main-foreground);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --spacing-boxShadowX: 4px;
+  --spacing-boxShadowY: 4px;
+  --spacing-reverseBoxShadowX: -4px;
+  --spacing-reverseBoxShadowY: -4px;
+  --radius-base: 15px;
+  --shadow-shadow: var(--shadow);
+  --font-weight-base: 600;
+  --font-weight-heading: 900;
+}
+  
+@layer base {
+  body {
+    @apply text-foreground font-base bg-background;
+  }
+
+  h1, h2, h3, h4, h5, h6{
+    @apply font-heading;
+  }
+}
